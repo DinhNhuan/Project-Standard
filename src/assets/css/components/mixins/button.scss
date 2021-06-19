@@ -1,0 +1,68 @@
+// button component
+$button-font-family: "Times New Roman";
+$button-font-size: 1rem;
+$button-font-color: $white;
+$button-font-color-hover: #a5c94f;
+
+$button-img-width: 1rem;
+$button-img-height: 1rem;
+
+$button-border-top-left: 0.5rem;
+$button-border-top-right: 0.5rem;
+$button-border-bottom-right: 0.5rem;
+$button-border-bottom-left: 0.5rem;
+
+$button-background-color: #3ca3f4;
+$button-background-color-hover: #002c6f;
+
+$button-padding-top: 1rem;
+$button-padding-right: 1rem;
+$button-padding-bottom: 1rem;
+$button-padding-left: 1rem;
+
+$button-margin-top: 1rem;
+$button-margin-right: 1rem;
+$button-margin-bottom: 1rem;
+$button-margin-left: 1rem;
+
+$button-icon-margin-right: 1rem;
+
+$button-transition: 0.5s;
+.buttonDefault {
+    display: inline-block;
+    text-decoration: none;
+    font-family: $button-font-family;
+    color: $button-font-color;
+    font-size: $button-font-size;
+    background-color: $button-background-color;
+    // margin: $button-margin-top $button-margin-right $button-margin-bottom $button-margin-left;
+    padding: $button-padding-top $button-padding-right $button-padding-bottom $button-padding-left;
+    border-radius: $button-border-top-left $button-border-top-right $button-border-bottom-right $button-border-bottom-left;
+    transition: $button-transition;
+    border: none;
+    &:focus {
+        outline: none;
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: $button-font-color-hover;
+        background-color: $button-background-color-hover;
+        transition: $button-transition;
+    }
+
+    .buttonDefault__icon {
+        margin-right: $button-icon-margin-right;
+    }
+
+    i.buttonDefault__icon {
+
+    }
+
+    img.buttonDefault__icon {
+        display: inline-block;
+        width: $button-img-width;
+        height: $button-img-height;
+    }
+}

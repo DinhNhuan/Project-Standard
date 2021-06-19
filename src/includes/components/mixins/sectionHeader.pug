@@ -1,0 +1,29 @@
+mixin section-header-component(data)
+    //- data attribute
+        image: 
+        wrapStyle: 
+        imageStyle: 
+        titleName: 
+        titleStyle: 
+        descName:
+        descStyle:
+        itemStyle: 
+        itemLinkStyle:
+        listLink: multiple link lines
+    div(class=`section__header ${data.wrapStyle ? data.wrapStyle: ''}`)
+        if data.image
+            img(src=data.image class=`section__header-image ${data.imageStyle ? data.imageStyle: ''}`)
+        else
+            div(class=`section__header-title ${data.titleStyle ? data.titleStyle: ''}`)= data.titleName
+        if data.descName
+            div(class=`section__header-description ${data.descStyle ? data.descStyle: ''}`)= data.descName
+        else
+            each lineInfo in data.listLink
+                div(class=`section__header-item ${data.itemStyle ? data.itemStyle: ''}`)
+                    a(class=`item__link ${data.itemLinkStyle ? data.itemLinkStyle: ''}`
+                        href=`${lineInfo.href}` 
+                        target=`${lineInfo.target ? lineInfo.target: ''}`)
+                        if lineInfo.iconName
+                            span(class=`item__icon ${lineInfo.iconStyle ? lineInfo.iconStyle: ''}`)
+                                i(class=`${lineInfo.iconName ? lineInfo.iconName: ''}`)
+                        span= lineInfo.text

@@ -1,0 +1,151 @@
+header.header-top {
+    background-color: #172b74;
+    .header-wrapper {
+        display: flex;
+        font-size: 1.5rem;
+        justify-content: space-between;
+        @include max-breakpoint(576) {
+            flex-wrap: wrap;
+            flex-direction: column;
+            // font-size: 1rem !important;
+        }
+        .header-item {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            @include max-breakpoint(576) {
+                flex-basis: 100%;
+                justify-content: center !important;
+                padding: 5px 0;
+            }
+            .line {
+                background: #fff;
+                height: 24px;
+                width: 1px;
+                margin: 0 25px;
+                @include max-breakpoint(576) {
+                    height: 15px;
+                    margin: 0 15px;
+                }
+            }
+            a,
+            p {
+                color: #fff;
+                text-decoration: none;
+                @include max-breakpoint(992) {
+                    font-size: 1.4rem !important;
+                }
+            }
+            .header-icon {
+                margin-right: 30px;
+                @include max-breakpoint(576) {
+                    margin-right: 15px;
+                }
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+                &+.header-icon {
+                    margin: 0px;
+                }
+            }
+            .header-wishlists,
+            .header-language {
+                .header-icon {
+                    margin-right: 10px;
+                }
+            }
+            .header-wishlists {
+                display: flex;
+                align-items: center;
+                .text {
+                    display: inline-block;
+                }
+            }
+            .header-language {
+                display: flex;
+                align-items: center;
+                .header-icon {
+                    a {
+                        img {
+                            width: 20px;
+                            height: 12px;
+                        }
+                    }
+                }
+            }
+            .header-login {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.header {
+    .header-wrapper {
+        
+        nav.navbar {
+
+            button.navbar-toggler {
+                outline: none;
+                border: none;
+                cursor: pointer;
+
+                i.btn-toggler {
+                    color: $color-primary;
+                    font-size: 2.5rem;
+                    border-radius: 5px;
+                }
+            }
+            .navbar-collapse {
+                ul.navbar-nav {
+                    @include max-breakpoint(992) {
+                        border-left: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        border-right: 1px solid #ddd;
+                        border-bottom-left-radius: 12px;
+                        border-bottom-right-radius: 12px;
+                        padding-bottom: 10px;
+                    }
+                    li.nav-item {
+                        .nav-link {
+                            text-transform: capitalize;
+                            text-decoration: none;
+                            transition: all linear .2s;
+                            font-size: 1.6rem;
+                            font-family: 'Open Sans', sans-serif;
+                            &:hover {
+                                color: $color-tertiary;
+                            }
+                        }
+                    }
+                    .btn-wrapper {
+                        @include max-breakpoint(992) {
+                            width: 100%;
+                            padding-left: 12px;
+                            padding-right: 12px;
+                        }
+                        .btn-properties {
+                            padding: 1.2rem 1.8rem 1.2rem 1.8rem;
+                            border-radius: 1rem 1rem 1rem 1rem;
+                            background: $color-tertiary;
+                            color: $color-white;
+                            text-align: center;
+                            font-size: 1.5rem;
+                            font-family: 'Open Sans', sans-serif;
+                            &:hover {
+                                background: #e66000;
+                            }
+                            @include max-breakpoint(992) {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

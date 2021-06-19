@@ -1,0 +1,34 @@
+mixin input-component-text(data)
+    input(type=`${data.type ? data.type: 'text'}` 
+        placeholder=data.placeholder
+        id=data.id name=data.name  value=data.value
+        class=`input__component-text ${data.inputStyle ? data.inputStyle: ''}`)
+
+mixin input-component-icon(data)
+    span(class=`input__component-icon ${data.iconStyle ? data.iconStyle: ''}` id=data.iconId)
+        i(class=`${data.iconName}`)
+
+mixin input-component(data)
+    //- data attribute:  
+        id : number
+        name: string
+        value : string
+        type : string
+        isDisable : true/false
+        iconName: string
+        iconStyle: string
+        inputStyle: string
+        plaseholder: string
+        wrapStyle:string
+        iconRight: true/false (default is left)
+        iconId:  number
+    if data.iconName
+        div(class=`input__component ${data.wrapStyle ? data.wrapStyle: ''}`)
+            if data.iconRight
+                +input-component-text(data)
+                +input-component-icon(data)
+            else 
+                +input-component-icon(data)
+                +input-component-text(data)
+    else 
+        +input-component-text(data)

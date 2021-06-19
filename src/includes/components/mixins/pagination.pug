@@ -1,0 +1,18 @@
+mixin paggination-component(data)
+    //- Data attrs
+        wrapStyle: 
+        itemLinkStyle: 
+        itemStyle: 
+        activeStyle: 
+        items: {
+                {text: 'Prev', href: ''},
+                {text: '1', href: '', isActive: true, target: '_blank'},
+                {text: 'Next', href: ''},
+                }
+
+    ul(class=`component__pagination ${data.wrapStyle ? data.wrapStyle: ''}`)
+        each item in data.items
+            li(class=`component__pagination-item ${data.itemStyle ? data.itemStyle: ''}`)
+                a(class=`item__link ${data.itemLinkStyle ? data.itemLinkStyle: ''} ${item.isActive ? 'active': ''}`
+                    href=item.href target=item.target )= item.text
+

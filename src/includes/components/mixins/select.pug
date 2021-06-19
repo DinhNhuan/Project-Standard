@@ -1,0 +1,17 @@
+
+mixin select-component(data)
+    //- data attribute
+        wrapStyle: for multipleselect
+        name: checkbox name
+        id: checkbox id
+        selectStyle: 
+        optionStyle: 
+        options: [{value: '', text:'', isSelect:true},..]
+    select(class=`select__component ${data.selectStyle ? data.selectStyle: ''}` 
+            id=data.id
+            name=data.name
+            disabled=data.isDisable)
+        each option in data.options
+            option(selected=option.isSelect class=`select__component-option ${data.optionStyle ? data.optionStyle: ''}`
+                    value=`${option.value ? option.value : ''}` )= option.text
+

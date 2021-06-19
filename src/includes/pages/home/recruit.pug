@@ -1,0 +1,10 @@
+.container 
+    +section-header-component({titleName: 'Recruit', 
+                                    wrapStyle: 'my-6',
+                                    titleStyle: 'leftborder', 
+                                    descName: 'Below is the latest real estate news we get regularly updated from reliable sources.'})
+    -let recruitList = [{link: true, href: 'google.com', img: true, imgSrc: 'https://abcland.vn/wp-content/uploads/2020/05/bat-dong-san-la-gi.jpg', fullsScreen: true, contentInner: false, overlay: false, content: true, contentDetails: { isNews: true, title: 'S. Korea’s Big Investors Flocking to Overseas Real Estate', desc: '18 Nov, 2019', news: 'An increasing number of South Korean investors are getting interested in real estate in foreign countries, especially the United States and Japan where regulations are relatively lax and property values are stable.'}}, {link: true, href: 'google.com', img: true, imgSrc: 'https://abcland.vn/wp-content/uploads/2020/05/bat-dong-san-la-gi.jpg', fullsScreen: true, contentInner: false, overlay: false, content: true, contentDetails: { isNews: true, title: 'S. Korea’s Big Investors Flocking to Overseas Real Estate', desc: '18 Nov, 2019', news: 'An increasing number of South Korean investors are getting interested in real estate in foreign countries, especially the United States and Japan where regulations are relatively lax and property values are stable.'}}, {link: true, href: 'google.com', img: true, imgSrc: 'https://abcland.vn/wp-content/uploads/2020/05/bat-dong-san-la-gi.jpg', fullsScreen: true, contentInner: false, overlay: false, content: true, contentDetails: { isNews: true, title: 'S. Korea’s Big Investors Flocking to Overseas Real Estate', desc: '18 Nov, 2019', news: 'An increasing number of South Korean investors are getting interested in real estate in foreign countries, especially the United States and Japan where regulations are relatively lax and property values are stable.'}}]
+    .row
+        each data in recruitList 
+            .col-12.col-lg-4.col-md-6
+                +cardDefault(data)

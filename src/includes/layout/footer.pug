@@ -1,0 +1,45 @@
+.footer.container
+    .footer__top
+        .footer__top-column.col-lg-12.mt-6.col-xl-auto
+            +section-header-component({image: 'assets/images/logo-anphat.png', imageStyle: 'column__image',
+                                    itemLinkStyle: 'hover-text-orange',
+                                    listLink: [
+                                        {iconName: 'fas fa-envelope', text: 'North Link Building, 10 Admiralty Street, 757695 Singapore', href: '#'},
+                                        {iconName: 'fas fa-phone-alt', text: 'Hotline:  18006268', href: '#'},
+                                        {iconName: 'fas fa-map-marker-alt', text: 'Email:  contact@flex-home.com', href: '#'},
+                                    ]})
+        .footer__top-column.col-lg-4.mt-6.col-xl-auto
+            +section-header-component({titleName: 'ABOUT', 
+                                    titleStyle: 'leftborder',
+                                    itemLinkStyle: 'hover-text-orange',
+                                    listLink: [
+                                        {text: 'About us', href: '#'},
+                                        {text: 'Contact us', href: '#'},
+                                        {text: 'Careers', href: '#'},
+                                        {text: 'Terms & Conditions', href: '#'},
+                                    ]})
+        .footer__top-column.col-lg-4.mt-6.col-xl-auto
+            +section-header-component({titleName: 'MORE INFORMATION',
+                                    titleStyle: 'leftborder', 
+                                    itemLinkStyle: 'hover-text-orange',
+                                    listLink: [
+                                        {text: 'All projects', href: '#'},
+                                        {text: 'All properties', href: '#'},
+                                        {text: 'Houses for sale', href: '#'},
+                                        {text: 'Houses for rent', href: '#'},
+                                    ]})
+        .footer__top-column.col-lg-4.mt-6.col-xl-auto
+            +section-header-component({titleName: 'NEWS', 
+                                    titleStyle: 'leftborder', 
+                                    itemLinkStyle: 'hover-text-orange',
+                                    listLink: [
+                                        {text: 'Latest news', href: '#'},
+                                        {text: 'House architecture', href: '#'},
+                                        {text: 'House design', href: '#'},
+                                        {text: 'Building materials', href: '#'},
+                                    ]})
+    .footer__bottom 
+        
+        +buttonDefault({fontawesome: true, class: 'color_white bg_orange fs_15 m-2', icon: true, iconClass: 'fas fa-phone-alt', title: '1900 9669'})
+        +buttonDefault({fontawesome: true, class: 'color_white bg_blue fs_15 m-2', icon: true, iconClass: 'fab fa-facebook-messenger', title: 'Messenger'})
+        span.footer__bottom-detail.text-orange.fs-15 © 2020 Flex Home is Proudly Powered by Botble Team

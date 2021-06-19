@@ -1,0 +1,62 @@
+//- render brand 
+mixin renderBrand(brandObj)
+    a(href=brandObj.href class="navbar-brand")
+            if brandObj.imgURL
+                img(src=brandObj.imgURL, alt=brandObj.alt)
+            else if brandObj.text
+                |#{brandObj.text}
+
+//- render navbar button toggler
+mixin renderbuttonToogler(idToggler)
+    -var _idToggler = idToggler ? `#${idToggler}` : ''
+    button(class="navbar-toggler collapse__button" type="button" data-toggle="collapse" data-target=_idToggler, id="toggle-btn")
+        i(class="fas fa-bars btn-toggler")
+
+//- render navbar menu 
+mixin renderNavbar(navbarObj, IdToggler, isButton, isSearch)
+    div(class="collapse navbar-collapse " id=IdToggler)
+        ul.navbar-nav
+            each item in navbarObj
+                -var isActive=item.active ? 'active' : ''
+                -var isDdropdown = item.dropdown  ? 'dropdown' : ''
+                li(class=`nav-item  ${isActive} ${isDdropdown}`)
+                    -var dropdownToggle=item.dropdown ? 'dropdown-toggle' : ''
+                    -var itemId=item.id ? item.id : ''
+                    -var disabled=item.disabled ? 'disabled' : ''
+                    a(class=`nav-link ${dropdownToggle} ${disabled}` href=item.href  id=itemId )=item.name
+                    if item.dropdown && item.subMenu
+                        div(class="dropdown-menu"  aria-labelledby=item.id ? item.id :'')
+                            +renderSubmenu(item.subMenu)
+            if isButton
+                .btn-wrapper
+                    +buttonDefault(isButton)
+            if isSearch
+                +renderFormSearch(isSearch)
+//- render submenu 
+mixin  renderSubmenu(subMenus)  
+    each subItem in subMenus 
+        a(class="dropdown-item " href=subItem.href)
+            span=subItem.name
+
+//- render Search                            
+mixin renderFormSearch(searchObj)
+    form(class="form-inline")
+        input(class="form-control" type="search" placeholder=`${searchObj.placeholder} ? ${searchObj.placeholder} : ''` aria-label="Search")
+        button(class=`btn ${searchObj.button.classCustom} ? ${searchObj.button.classCustom} : ''` type="submit")=searchObj.button.name
+
+mixin renderNavigation(inputObj)
+    nav(class="navbar navbar-custom")
+        if  inputObj.brand
+            +renderBrand (inputObj.brand)
+        if inputObj.btnToggler 
+            +renderbuttonToogler(inputObj.btnIdToggler)            
+        if inputObj.navbar
+            +renderNavbar(inputObj.navbar, inputObj.btnIdToggler, inputObj.hasButton)
+        
+        
+
+
+            
+    
+
+

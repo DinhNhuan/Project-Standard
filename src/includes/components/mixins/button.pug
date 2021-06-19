@@ -1,0 +1,15 @@
+mixin renderIcon(data)
+    if data.icon 
+        if data.fontawesome 
+            i.buttonDefault__icon(class=`${data.iconClass}`)
+        else
+            img.buttonDefault__icon(src=`${data.iconSrc}`)
+    span.buttonDefault__title= data.title
+    
+mixin buttonDefault(data)
+    if data.link
+        a.buttonDefault(href=`${data.link}` class=`${data.class}` target=`${data.isNewTab ? '_blank' : '_self'}`)
+            +renderIcon(data)
+    else 
+        button.buttonDefault(class=`${data.class}`)
+            +renderIcon(data)

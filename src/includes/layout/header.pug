@@ -1,0 +1,17 @@
+include ./headerTop.pug
+.header 
+   .container
+        .header-wrapper
+            +renderNavigation({     btnIdToggler: 'navbarSupportedContent',
+                                brand:{ text:"anphat", alt: "An Phat Logo",
+                                        imgURL:'./assets/images/logo-square.png', 
+                                        href:"#"},
+                                navbar:[
+                                    {href:'#', name:'Dự án',  active: true}, 
+                                    {href:'#', name:'Nhà-Căn Hộ'},
+                                    {href:'#', name:'Tin tức'}, 
+                                    {href:'#', name:'Tuyển Dụng', dropdown: true, id:"navbarDropdown"},
+                                    {href:'#', name:'Liên Hệ'}], 
+                                btnToggler:{imgURL: 'https://beta.anphatland.com.vn/themes/anphatland/icons/icon-bar-blue.svg'},
+                                hasButton:{title:"Add Properties", link:"#", class:"btn-properties sm-btn", icon: true, fontawesome:true, iconClass:"fas fa-plus-circle"}
+                                })

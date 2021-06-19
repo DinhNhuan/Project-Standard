@@ -1,0 +1,67 @@
+// collapse component
+$collapse-content-font-size: 1.5rem;
+$collapse-content-size: 0.1rem;
+$collapse-content-type: solid;
+$collapse-content-color: $gray;
+$collapse-content-width: 100%;
+$collapse-text-padding: 1rem;
+$collapse-item-link-padding: 0.5rem;
+$collapse-item-link-size: 0.1rem;
+$collapse-item-link-type: solid;
+$collapse-item-link-color: $gray;
+$collapse-item-link-background: $white;
+$collapse-item-link-text-color: $black;
+$collapse-item-link-hover-background: $blue;
+$collapse-item-link-hover-text-color: $white;
+
+$collapse-button-padding: 0.5rem;
+$collapse-button-size: 0.1rem;
+$collapse-button-type: solid;
+$collapse-button-color: $gray;
+$collapse-button-background: $blue;
+$collapse-button-text-color: $white;
+$collapse-button-icon: "\002B";
+
+.collapse__button {
+    padding: $collapse-button-padding;
+    border: $collapse-button-size $collapse-button-type $collapse-button-color;
+    // background: $collapse-button-background;
+    color: $collapse-button-text-color;
+    &.icon:after {
+        content: $collapse-button-icon;
+        color: $white;
+        font-weight: bold;
+        float: right;
+        margin-left: 0.5rem;
+    } 
+}
+.collapse__content {
+    font-size: $collapse-content-font-size;
+    & .collapse__content-text {
+        padding: $collapse-text-padding;
+        border: $collapse-content-size $collapse-content-type $collapse-content-color;
+        width: $collapse-content-width;
+    }
+    & .collapse__content-item {
+        & .item_link {
+            display: block;
+            padding: $collapse-item-link-padding;
+            border: $collapse-item-link-size $collapse-item-link-type $collapse-item-link-color;
+            background: $collapse-item-link-background;
+            color: $collapse-item-link-text-color;
+            &:hover {
+                color: $collapse-item-link-hover-text-color;
+                background: $collapse-item-link-hover-background;
+            }
+        }
+    }
+}
+
+.collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    &.show {
+        max-height: 100vh;
+    }
+}

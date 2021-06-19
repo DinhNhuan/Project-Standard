@@ -1,0 +1,33 @@
+mixin checkbox-component(data)
+    //- require: fontaesome + js
+    //- data attribute
+        wrapStyle: 
+        name: checkbox name
+        id: checkbox id
+        value: checkbox value
+        isDisable: true/false
+        isCheck: true/false
+        checkIcon: class of fontaesome
+        uncheckIcon: class of fontaesome
+        checkStyle: class name -> define color,background,.. of icon --> checkbox is check
+        uncheckStyle: class name -> define color,background,.. of icon --> checkbox is uncheck
+        labelName: text name
+        labelStyle: define style for text
+
+    label(class=`checkbox__component ${data.wrapStyle ? data.wrapStyle: ''}`)
+        span(class='checkbox__component-box')
+            input(type='checkbox' id=data.id value=data.value
+                name=data.name class='box__input' 
+                disabled=data.isDisable checked=data.isCheck)
+            span(class=`box__icon ${data.isCheck ? (data.checkStyle ? data.checkStyle: 'text-blue'): (data.uncheckStyle ? data.uncheckStyle: 'text-gray')}  
+                ${data.isDisable ? 'text-disable': ''}`)
+                i(class=`${data.isCheck ? (data.checkIcon ? data.checkIcon: 'fas fa-check-square'): (data.uncheckIcon ? data.uncheckIcon: 'far fa-square') }`
+                    data-icon-check=`${data.checkIcon ? data.checkIcon: 'fas fa-check-square'}`
+                    data-icon-uncheck=`${data.uncheckIcon ? data.uncheckIcon: 'far fa-square'}`
+                    data-style-check=`${data.checkStyle ? data.checkStyle: 'text-blue'}`
+                    data-style-uncheck=`${data.uncheckStyle ? data.uncheckStyle: 'text-gray'}`)
+        span(class=`checkbox__component-label 
+            ${data.labelStyle ? labelStyle: ''}
+            ${data.isDisable ? 'text-disable': ''}`)= `${data.labelName ? data.labelName: ''}`
+
+

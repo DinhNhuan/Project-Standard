@@ -1,0 +1,17 @@
+// select component
+$select-font-size: 1.5rem;
+$select-padding: 0.5rem;
+$select-margin: 0.5rem;
+$select-border-size: 0.1rem;
+$select-border-type: solid;
+$select-border-color: $gray;
+$select-border-radius: 0.5rem;
+.select__component {
+    padding: $select-padding;
+    margin: $select-margin;
+    border: $select-border-size $select-border-type $select-border-color;
+    border-radius: $select-border-radius;
+    font-size: $select-font-size;
+    & .select__component-option {
+    }
+}

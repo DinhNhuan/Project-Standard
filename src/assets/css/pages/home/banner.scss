@@ -1,0 +1,127 @@
+.banner {
+    height: 40rem;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    &.gradient:after {
+        content:'';
+        border-radius: 1rem;
+        position:absolute;
+        left:0; 
+        top:0;
+        width:100%; 
+        z-index: -1;
+        height:100%;
+        display:inline-block;
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(100%, rgba(23, 43, 116, .9)), color-stop(0%, rgba(23, 43, 116, .4)));
+    }
+    & .banner__image {
+        min-width: 100%;
+        display: block;
+        z-index: -1;
+        margin-top: -8rem;
+        position: absolute;
+    }
+    & .banner__title {
+        display: block;
+        font-size: 2.8rem;
+        font-family: 'Google Sans';
+        color: $white;
+        line-height: 3.2rem;
+        margin: 4rem 0;
+        
+    }
+    & .banner__searchbox {
+        width: 90%;
+        max-width: 63rem;
+        background-color: $white;
+        border-radius: 1rem;
+        & .banner__searchbox-form {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            flex-wrap: wrap;
+            & .form__input {
+                border: none;
+                font-size: 1.7rem;
+                font-family: 'Google Sans';
+                line-height: 2rem;
+                width: 100%;
+                & input:focus {
+                    border-bottom: 1px solid #80bdff;
+                }
+            }
+            & .form__advance {
+                font-size: 1.5rem;
+                white-space: nowrap;
+                margin: 0;
+                background-color: $white;
+                color: #4A4A4A;
+                font-style: italic;
+                padding: 1rem 1.5rem;
+                width: 100%;
+                border: none;
+            }
+            & .form__button {
+                width: 100%;
+                font-size: 1.5rem;
+                white-space: nowrap;
+                background-color: $dark-blue;
+                padding: 1rem 1.5rem;
+                border-radius: 0.8rem;
+                margin: 0;
+            }
+            
+        }
+        & .banner__searchbox-option {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0 1rem;
+            & .option__product, & .option__price {
+                
+                border: 0;
+                border-radius: 1rem;
+                padding: 1rem;
+                outline: none;
+                appearance: none;
+                margin: 1rem 0;
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem #80bdff;
+                }
+            }
+            & .option__price {
+                width: 45%;
+            }
+            & .option__product {
+                width: 100%;
+            }
+            & .border-0 {
+                border: 0 !important;
+            }
+            
+        }
+        @include min-breakpoint(576) {
+            & .banner__searchbox-form {
+                flex-wrap: unset;
+                & .form__advance {
+                    width: auto;
+                }
+                & .form__button {
+                    width: auto;
+                }
+            }
+            & .banner__searchbox-option {
+                & .option__price,  & .option__product{
+                    width: 30%;
+                }
+            }
+            
+        }
+    } 
+    
+}

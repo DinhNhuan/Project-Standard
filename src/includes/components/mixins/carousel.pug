@@ -1,0 +1,26 @@
+mixin renderCarouselContent(itemContent, itemRedirectLink)
+    if itemContent
+        .item-content
+            if itemContent.icon
+                .item-icon
+                    if  itemContent.icon.type == 'image'
+                        img(src=itemContent.icon.source, alt=itemContent.icon.sourceAlt ? itemContent.icon.sourceAlt : '')
+                    else if itemContent.icon.type == 'font-awesome'
+                        i(class=itemContent.icon.iconClass)
+            a.item-title(href=itemRedirectLink)=itemContent.title
+            p.item-description=itemContent.description ? itemContent.description : ''
+
+
+mixin renderOwlCarousel(dataObj)            
+    .owl-carousel.custom-style-carousel.owl-loaded.owl-drag(id=dataObj.id ? dataObj.id : '')
+        each object in dataObj.data
+            .item
+                .carousel-item-box
+                    if object.itemImage && object.itemImage.length
+                        .item-background
+                            img(src=object.itemImage, alt=object.imageAlt)
+                        if object.isOverlay
+                            .item-overlay
+                        if object.itemContent
+                            +renderCarouselContent(object.itemContent, object.itemRedirectLink)
+                        

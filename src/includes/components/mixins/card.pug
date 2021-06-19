@@ -1,0 +1,58 @@
+mixin renderImage(data)
+    if data.img 
+        img.card__img-src(src=`${data.imgSrc}` alt=`${data.imgAlt}` class=`${data.fullScreen ? 'full' : ''}`)
+
+mixin renderInnerContent(data)
+    // Chinh sua noi dung tren hinh anh
+    if data.contentInner
+        .card__img-contentInner
+            h3.contentInner__title= data.contentInnerDetails.title
+            p.contentInner__desc= data.contentInnerDetails.desc
+    if data.overlay     
+        .card__img-overlay
+
+mixin renderContent(data)
+    // Chinh sua noi dung ben ngoai anh
+    if data.content
+        .card__content(class=`${data.contentDetails.isNews ? 'news' : ''}`)
+            if data.link
+                a.card__content-title(href=`$data.href`)= data.contentDetails.title
+            else 
+                h2.card__content-title= data.contentDetails.title
+            p.card__content-desc= data.contentDetails.desc
+            p.card__content-price= `Giá: `
+                span= `${data.contentDetails.priceStart} - ${data.contentDetails.priceEnd} tr/m`
+            p.card__content-time= `Giao nhà: `
+                span= `${data.contentDetails.time}`
+            p.card__content-news= data.contentDetails.news
+
+mixin cardDefault(data) 
+    .card
+        if data.link
+            a.card__img(href=`${data.href}` class=`${data.isRound ? 'round' : ''}`)
+                +renderImage(data)
+                +renderInnerContent(data)
+            +renderContent(data)
+        else 
+            .card__img(class=`${data.isRound ? 'round' : ''}`)
+                +renderImage(data)
+                +renderInnerContent(data)
+            +renderContent(data)
+
+//- Data Sample: {
+        img: true / false - Card có ảnh hay không
+        imgSrc: '' - Link ảnh của card
+        imgAlt: '' - Alt của ảnh
+        fullScreen: true / false - Ảnh full hay không
+        isRound: true / false - Ảnh có phải hình tròn hay không
+
+        contentInner: true / false - Phía trên ảnh có nội dung hay không
+        contentInnerDetails: { title: '', desc: '' } - Nội dung bên trên ảnh
+        overlay: true / false - Ảnh có overlay hay không
+
+        content: true / false - Ảnh có nội dung bên ngoài hay không 
+        contentDetails: { title: '', desc: '', priceStart: '', ... } - Nội dung bên ngoài
+
+        link: true / false - Card có link hay không
+        href: '' - Link tới của card
+    }

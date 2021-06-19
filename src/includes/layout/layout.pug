@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    title Bất động sản
+    //- Logo Icon
+    link(rel="shortcut icon" type="image/x-icon" href="")
+    //- OwlCarousel CSS
+    link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css")
+    //- FontAwesome
+    link(rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous")
+    //- Font
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+    //- Style CSS
+    link(rel="stylesheet" type="text/css" href="./assets/css/main.css")
+  body
+      include ../components/index.pug
+      include ./header.pug
+      //- đầu nối để lắp các thiết bị sau này 
+      block content  
+      include ./footer.pug
+    //- jQuery
+    <script src="./assets/js/jquery.min.js"></script>
+    //- Owl Carousel
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    //- Java Script
+
+    script(src="./assets/js/main.js")

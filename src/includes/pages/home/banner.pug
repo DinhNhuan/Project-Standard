@@ -1,0 +1,13 @@
+.banner.gradient
+    img.banner__image(src='assets/images/banner.jpg')
+    span.banner__title Bạn muốn tìm gì?
+    .banner__searchbox 
+        form.banner__searchbox-form
+            +input-component({iconName: 'fas fa-search', wrapStyle: 'form__input',  iconStyle: 'text-orange', placeholder: 'Gõ từ khóa mà bạn muốn tìm kiếm',  value: ''})
+            +collapse-component-button({buttonStyle: 'form__advance', colapseId: 'advanceOption', buttonText: 'Tìm nâng cao'})
+            +buttonDefault({class: 'form__button cursor-pointer', title: 'Tìm kiếm'})
+            
+        .banner__searchbox-option.collapse__content.collapse(id='advanceOption')
+            +select-component({selectStyle: 'option__product', options:[{value: '', text:'Loại dự án'}, {value: '', text:'Chung cư'}, {value: '', text:'Chung cư'}, {value: '', text:'Chung cư'}]})
+            +input-component({ inputStyle: 'option__price',  placeholder: 'Price from',  type: 'number'})
+            +input-component({inputStyle: 'option__price',   placeholder: 'Price to',  type: 'number'})

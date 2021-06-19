@@ -1,0 +1,50 @@
+// sectionHeader component
+$section-header-font-size: 1.5rem;
+$section-header-padding: 0.5rem;
+$section-header-line-height: 1.5;
+$section-header-padding-left: 1rem;
+$section-header-padding-right: 1rem;
+$section-header-item-icon-width: 2rem;
+$section-header-item-icon-margin-right: 1rem;
+.section__header {
+  line-height: $section-header-line-height;
+  font-size: $section-header-font-size;
+  .section__header-image {
+    display: inline-block;
+  }
+  .section__header-title {
+    padding-left: $section-header-padding-left;
+    padding-right: $section-header-padding-right;
+    &.leftborder {
+      font-weight: 700;
+      font-size: 2.1rem;
+      color: $dark-blue;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      &:before {
+          content: '';
+          height: 1.5rem;
+          width: 4px;
+          background: $orange;
+          display: inline-block;
+          margin-left: -1rem;
+          margin-right: .5rem;
+          border-radius: 1rem;
+      }
+    }
+    
+  }
+  .section__header-description, .section__header-item{
+    padding-left: $section-header-padding-left;
+    padding-right: $section-header-padding-right;
+    .item__link{
+      display: flex;
+      .item__icon {
+        margin-right: $section-header-item-icon-margin-right;
+        width: $section-header-item-icon-width;
+        display: inline-block;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,190 @@
+// card components
+$card-img-width: 12rem;
+$card-img-height: 12rem;
+$card-img-border-top-left: 12px;
+$card-img-border-top-right: 12px;
+$card-img-border-bottom-left: 12px;
+$card-img-border-bottom-right: 12px;
+
+$card-overlay: linear-gradient(
+  360deg,
+  rgba(23, 43, 116, 0.81) 14.93%,
+  rgba(0, 0, 0, 0) 100%
+);
+$card-overlay-opacity: 1;
+
+$card-contentInner-font-family: "Roboto";
+$card-contentInner-title-font-size: 1.2rem;
+$card-contentInner-title-font-weight: 500;
+$card-contentInner-title-line-height: 1.4rem;
+$card-contentInner-title-font-color: #ffffff;
+$card-contentInner-title-font-color-hover: #ffffff;
+$card-contentInner-desc-font-size: 1.1rem;
+$card-contentInner-desc-font-weight: 500;
+$card-contentInner-desc-line-height: 1.3rem;
+$card-contentInner-desc-font-color: #ffffff;
+$card-contentInner-desc-font-color-hover: #ffffff;
+
+$card-content-font-family: "Roboto";
+$card-content-title-font-size: 1.5rem;
+$card-content-title-font-weight: 700;
+$card-content-title-line-height: 1.9rem;
+$card-content-title-font-color: #172b74;
+$card-content-title-font-color-hover: rgba(23, 43, 116, 0.5);
+$card-content-desc-font-size: 1.2rem;
+$card-content-desc-font-weight: 500;
+$card-content-desc-line-height: 1.4rem;
+$card-content-desc-font-color: #4a4a4a;
+$card-content-desc-font-color-hover: #4a4a4a;
+
+$card-contentInner-margin-top: 1.3rem;
+$card-contentInner-margin-right: 0.8rem;
+$card-contentInner-margin-bottom: 1.3rem;
+$card-contentInner-margin-left: 0.8rem;
+
+$card-content-margin-top: 0.3rem;
+$card-content-margin-right: 1.2rem;
+$card-content-margin-bottom: 1.2rem;
+$card-content-margin-left: 1.2rem;
+
+.card {
+  @include flexControl(column, center, center);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 24px;
+  border: none;
+
+  &__img {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    border-radius: $card-img-border-top-left $card-img-border-top-right
+      $card-img-border-bottom-left $card-img-border-bottom-right;
+
+    // When image full, set size
+    //width: $card-img-width;
+    //height: $card-img-height;
+
+    &.round {
+      border-radius: 50%;
+    }
+
+    &-src {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      &.full {
+        @include mid();
+        object-fit: cover;
+      }
+    }
+
+    &-contentInner {
+      @include positionControl(absolute, -1, 0, 0, -1);
+      font-family: $card-contentInner-font-family;
+      margin: $card-contentInner-margin-top $card-contentInner-margin-right
+        $card-contentInner-margin-bottom $card-contentInner-margin-left;
+      z-index: 1;
+
+      .contentInner__title {
+        font-size: $card-contentInner-title-font-size;
+        font-weight: $card-contentInner-title-font-weight;
+        line-height: $card-contentInner-title-line-height;
+        color: $card-contentInner-title-font-color;
+
+        &:hover {
+          color: $card-contentInner-title-font-color-hover;
+        }
+      }
+
+      .contentInner__desc {
+        font-size: $card-contentInner-desc-font-size;
+        font-weight: $card-contentInner-desc-font-weight;
+        line-height: $card-contentInner-desc-line-height;
+        color: $card-contentInner-desc-font-color;
+        opacity: 0.8;
+
+        &:hover {
+          color: $card-contentInner-desc-font-color-hover;
+        }
+      }
+    }
+
+    &-overlay {
+      @include positionControl(absolute, 0, 0, 0, 0);
+
+      //Modified overlay here
+      background: $card-overlay;
+      opacity: $card-overlay-opacity;
+    }
+  }
+
+  &__content {
+    // Modified content here
+    font-family: $card-content-font-family;
+    margin: $card-content-margin-top $card-content-margin-right
+      $card-content-margin-bottom $card-content-margin-left;
+    width: 100%;
+
+    &-title {
+      font-size: $card-content-title-font-size;
+      font-weight: $card-content-title-font-weight;
+      line-height: $card-content-title-line-height;
+      color: $card-content-title-font-color;
+
+      &:hover {
+        color: $card-content-title-font-color-hover;
+      }
+    }
+
+    &-desc {
+      font-size: $card-content-desc-font-size;
+      font-weight: $card-content-desc-font-weight;
+      line-height: $card-content-desc-line-height;
+      color: $card-content-desc-font-color;
+
+      &:hover {
+        color: $card-content-desc-font-color-hover;
+      }
+    }
+
+    &-price,
+    &-time {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+      background-color: #f3f3f3;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+
+      span {
+        color: #ff6b00;
+      }
+    }
+
+    &-time {
+      margin-left: 8px;
+    }
+
+    &-news {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      margin-top: 0.4rem;
+      display: none;
+    }
+
+    &.news {
+      .card__content-price,
+      .card__content-time {
+        display: none;
+      }
+
+      .card__content-news {
+        display: block;
+      }
+    }
+  }
+}

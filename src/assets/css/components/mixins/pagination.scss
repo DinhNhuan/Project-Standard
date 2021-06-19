@@ -1,0 +1,47 @@
+// Pagination component
+$pagination-font-size: 1.5rem;
+$pagination-item-link-padding: 0.5rem;
+$pagination-item-link-size: 0.1rem;
+$pagination-item-link-type: solid;
+$pagination-item-link-color: $gray;
+$pagination-item-link-background: $white;
+$pagination-item-link-text-color: $black;
+$pagination-item-link-hover-background: $blue;
+$pagination-item-link-hover-text-color: $white;
+$pagination-item-min-width: 3.5rem;
+$pagination-item-min-height: 3.5rem;
+$pagination-active-background: $blue;
+$pagination-active-text-color: $white;
+
+.component__pagination {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $pagination-font-size;
+    & .component__pagination-item {
+        & .circle {
+            border-radius: 50%;
+        }
+        & .item__link {
+            min-width: $pagination-item-min-width;
+            min-height: $pagination-item-min-height;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: $pagination-item-link-padding;
+            border: $pagination-item-link-size $pagination-item-link-type $pagination-item-link-color;
+            background: $pagination-item-link-background;
+            color: $pagination-item-link-text-color;
+            &:hover {
+                color: $pagination-item-link-hover-text-color;
+                background: $pagination-item-link-hover-background;
+            }
+            &.active {
+                color: $pagination-active-text-color;
+                background-color: $pagination-active-background;
+            }
+        }
+        
+        
+    }
+}

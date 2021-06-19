@@ -1,0 +1,42 @@
+mixin collapse-component-button(data)
+    button(class=`collapse__button ${data.buttonStyle ? data.buttonStyle : ''}`
+             type=`${data.buttonType ? data.buttonType : 'button'}` 
+             id=data.buttonId
+             data-target=`#${data.colapseId ? data.colapseId : ''}` )= data.buttonText
+
+mixin collapse-component-content(data)
+    if data.contentType == `list`
+        ul(class=`collapse__content ${data.colapseClass ? data.colapseClass : 'collapse'} ${data.contentStyle ? data.contentStyle : ''}`  
+            id=`${data.colapseId ? data.colapseId : ''}`)
+            each item in data.items
+                li(class=`collapse__content-item ${item.itemStyle ? item.itemStyle: ''}`)
+                    a(class=`item_link ${item.linkStyle ? item.linkStyle: ''}` 
+                        href=item.href  target=item.target  id=item.id  
+                        )= item.text
+    else 
+        div(class=`collapse__content ${data.colapseClass ? data.colapseClass : 'collapse'} ${data.contentStyle ? data.contentStyle : ''}`  
+            id=`${data.colapseId ? data.colapseId : ''}`)
+            p(class=`collapse__content-text ${data.textStyle ? data.textStyle : ''}`)= data.contentText
+
+
+mixin collapse-component(data)
+    //- data attributes:
+        buttonStyle: 
+        buttonType: default is button
+        buttonId: 
+        buttonText:
+        colapseClass: default is collapse
+        colapseId: require
+        contentStyle: 
+        contentType: list or text
+        for type list: 
+            items = [{itemStyle: '', linkStyle: '', href: '', target: '', text:'', id: ''}, ...]
+        for type text
+            textStyle: ''
+            contentText: ''
+    
+    +collapse-component-button(data)
+    +collapse-component-content(data)
+
+
+        

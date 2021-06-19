@@ -1,0 +1,2 @@
+# Project-Standard
+build component

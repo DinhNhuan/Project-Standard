@@ -1,6 +1,7 @@
 //- render brand 
 mixin renderBrand(brandObj)
     a(href=brandObj.href class="navbar-brand")
+        span
             if brandObj.imgURL
                 img(src=brandObj.imgURL, alt=brandObj.alt)
             else if brandObj.text
@@ -9,29 +10,26 @@ mixin renderBrand(brandObj)
 //- render navbar button toggler
 mixin renderbuttonToogler(idToggler)
     -var _idToggler = idToggler ? `#${idToggler}` : ''
-    button(class="navbar-toggler collapse__button" type="button" data-toggle="collapse" data-target=_idToggler, id="toggle-btn")
+    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target=_idToggler, id="toggle-btn")
         i(class="fas fa-bars btn-toggler")
 
 //- render navbar menu 
-mixin renderNavbar(navbarObj, IdToggler, isButton, isSearch)
-    div(class="collapse navbar-collapse " id=IdToggler)
+mixin renderNavbar(inputObj)
+    div(class="collapse navbar-collapse" id=inputObj.btnIdToggler)
         ul.navbar-nav
-            each item in navbarObj
-                -var isActive=item.active ? 'active' : ''
-                -var isDdropdown = item.dropdown  ? 'dropdown' : ''
-                li(class=`nav-item  ${isActive} ${isDdropdown}`)
-                    -var dropdownToggle=item.dropdown ? 'dropdown-toggle' : ''
-                    -var itemId=item.id ? item.id : ''
-                    -var disabled=item.disabled ? 'disabled' : ''
+            each item in inputObj.navbar
+                -let isActive=item.active ? 'active' : ''
+                -let isDdropdown = item.dropdown  ? 'dropdown' : ''
+                li(class=`nav-item ${isActive} ${isDdropdown}`)
+                    -let dropdownToggle=item.dropdown?'dropdown-toggle':''
+                    -let itemId=item.id ? item.id : ''
+                    -let disabled=item.disabled ? 'disabled' : ''
                     a(class=`nav-link ${dropdownToggle} ${disabled}` href=item.href  id=itemId )=item.name
                     if item.dropdown && item.subMenu
-                        div(class="dropdown-menu"  aria-labelledby=item.id ? item.id :'')
+                        div(class="dropdown-menu" aria-labelledby=item.id ? item.id :'')
                             +renderSubmenu(item.subMenu)
-            if isButton
-                .btn-wrapper
-                    +buttonDefault(isButton)
-            if isSearch
-                +renderFormSearch(isSearch)
+        
+        
 //- render submenu 
 mixin  renderSubmenu(subMenus)  
     each subItem in subMenus 
@@ -41,20 +39,53 @@ mixin  renderSubmenu(subMenus)
 //- render Search                            
 mixin renderFormSearch(searchObj)
     form(class="form-inline")
+        -let _classCustom=searchObj.button.classCustom ? searchObj.button.classCustom : ''
+        -let _buttonType=searchObj.button.type ? searchObj.button.type : 'submit'
         input(class="form-control" type="search" placeholder=`${searchObj.placeholder} ? ${searchObj.placeholder} : ''` aria-label="Search")
-        button(class=`btn ${searchObj.button.classCustom} ? ${searchObj.button.classCustom} : ''` type="submit")=searchObj.button.name
+        button(class=`btn ${_classCustom}` type=`${_buttonType}`)=searchObj.button.name
 
 mixin renderNavigation(inputObj)
-    nav(class="navbar navbar-custom")
+    nav(class="navbar")
+        //- brand
         if  inputObj.brand
             +renderBrand (inputObj.brand)
-        if inputObj.btnToggler 
-            +renderbuttonToogler(inputObj.btnIdToggler)            
+        //- button toggler
+        if inputObj.btnToggler
+            +renderbuttonToogler(inputObj.btnToggler)
+        //- navbar
         if inputObj.navbar
-            +renderNavbar(inputObj.navbar, inputObj.btnIdToggler, inputObj.hasButton)
+            +renderNavbar(inputObj)
+        //- button link 
+        if inputObj.isButtonLink
+            +renderButton(inputObj.isButtonLink)
+        //- Form search
+        if inputObj.isSearchForm
+            +renderFormSearch(inputObj.isSearchForm)
         
         
-
+//- +renderNavigation({ btnIdToggler: 'navbarSupportedContent',
+//-                     brand:{ 
+//-                             text:"anphat", 
+//-                             alt: "An Phat Logo", 
+//-                             imgURL:'./assets/images/logo-square.png',
+//-                             href:"#"}, 
+//-                     navbar:[{href:'#', name:'Dự án',  active: true},
+//-                             {href:'#', name:'Nhà-Căn Hộ'},
+//-                             {href:'#', name:'Tin tức'},
+//-                             {href:'#', name:'Tuyển Dụng', dropdown: true, id:"navbarDropdown"},
+//-                             {href:'#', name:'Liên Hệ'}], 
+//-                     btnToggler:{imgURL: 'https://beta.anphatland.com.vn/themes/anphatland/icons/icon-bar-blue.svg'}, 
+//-                     hasButton:{ title:"Add Properties", 
+//-                                 link:"#", 
+//-                                 class:"btn-properties sm-btn", 
+//-                                 icon: true, fontawesome:true, 
+//-                                 iconClass:"fas fa-plus-circle",
+//-                                 position: 'before'},
+//-                     isSearchForm: {
+//-                         input:{type: 'search', placehoder: 'key search', labelArea: 'search', id:''},
+//-                         button: {type: 'button', classCustom: '', id:'', value: 'search'}
+//-                     }
+//- })
 
             
     
